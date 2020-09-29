@@ -8,6 +8,7 @@
   transition: 700ms ease-in-out;
 
   .left-side {
+    
     .logo {
       img {
         margin-bottom: 15px;
@@ -20,6 +21,7 @@
         font-weight: 400;
       }
     }
+
     .form-content {
       padding: 24px 18px 0 0px;
       form {
@@ -113,6 +115,28 @@
     }
   }
 }
+
+
+//        VALIDATION ERROR STYLING          //
+
+.errors {
+  p {
+    color: #d93025;
+    font-size: 12px;
+    margin: 0;
+    margin-bottom: 2px;
+  }
+
+  .error-icon {
+    margin: 3px 5px 0 0;
+  }
+}
+
+.error-input-border {
+  border: 2px solid red !important;
+}
+
+
 
 
 //        RESPONSİVE CODES          //

@@ -13,27 +13,73 @@
       </div>
       <div class="form-content">
         <form [formGroup]="userForm" (submit)="submitForm()">
+          <!--            NAME INPUT            -->
+
           <div class="names-info">
             <div class="row">
               <div class="name col-sm-6 pr-0">
-                <input type="text" placeholder="Ad" formControlName="name" />
+                <input
+                  type="text"
+                  placeholder="Ad"
+                  formControlName="name"
+                  [ngClass]="
+                    formError && nameErrors ? 'error-input-border' : ''
+                  "
+                />
+                <div *ngIf="formError && nameErrors" class="errors">
+                  <p *ngIf="nameErrors.required">
+                    <i class="fas fa-exclamation-circle error-icon"></i>
+                    Adınızı Girin
+                  </p>
+                  <p *ngIf="nameErrors.minlength">
+                    <i class="fas fa-exclamation-circle error-icon"></i>Minimum
+                    {{ nameErrors.minlength.requiredLength }} karakter girin
+                  </p>
+                </div>
               </div>
               <div class="lastName col-sm-6">
                 <input
                   type="text"
                   placeholder="Soyad"
                   formControlName="lastName"
+                  [ngClass]="
+                    formError && lastnameErrors ? 'error-input-border' : ''
+                  "
                 />
+                <div *ngIf="formError && lastnameErrors" class="errors">
+                  <p *ngIf="lastnameErrors.required">
+                    <i class="fas fa-exclamation-circle error-icon"></i>
+                    Soyadınızı Girin
+                  </p>
+                  <p *ngIf="lastnameErrors.minlength">
+                    <i class="fas fa-exclamation-circle error-icon"></i>Minimum
+                    {{ lastnameErrors.minlength.requiredLength }} karakter girin
+                  </p>
+                </div>
               </div>
             </div>
           </div>
+
+          <!--            EMAIL INPUT            -->
+
           <div class="email">
             <input
               type="text"
               placeholder="Kullanıcı Adı"
               formControlName="email"
+              [ngClass]="formError && emailErrors ? 'error-input-border' : ''"
             />
-            <div class="input-span">
+            <div *ngIf="formError && emailErrors" class="errors">
+              <p *ngIf="emailErrors.required">
+                <i class="fas fa-exclamation-circle error-icon"></i>
+                Gmail Adresi Seçin
+              </p>
+              <p *ngIf="emailErrors.email">
+                <i class="fas fa-exclamation-circle error-icon"></i>
+                Geçerli bir email adresi girin
+              </p>
+            </div>
+            <div [hidden]="formError" class="input-span">
               Harf,rakam ve nokta işaretini kullanabilirsiniz.
             </div>
             <div class="email-action">
@@ -42,6 +88,9 @@
               </div>
             </div>
           </div>
+
+          <!--            PASSWORD & CONFIRM PASSWORD INPUTS           -->
+
           <div class="password-confirmPass">
             <div class="body">
               <div class="inputs">
@@ -50,21 +99,55 @@
                     type="password"
                     placeholder="Şifre"
                     formControlName="password"
+                    [ngClass]="
+                      formError && passwordErrors ? 'error-input-border' : ''
+                    "
                   />
+                  <div *ngIf="formError && passwordErrors" class="errors">
+                    <p *ngIf="passwordErrors.required">
+                      <i class="fas fa-exclamation-circle error-icon"></i>
+                      Bir Şifre Girin
+                    </p>
+                    <p *ngIf="passwordErrors.minlength">
+                      <i class="fas fa-exclamation-circle error-icon"></i
+                      >Minimum
+                      {{ passwordErrors.minlength.requiredLength }} karakter
+                      girin
+                    </p>
+                  </div>
                 </div>
                 <div class="confirm-password ml-3">
                   <input
                     type="password"
                     placeholder="Onayla"
-                    formControlName="confirmPass"
+                    formControlName="confirmPassword"
+                    [ngClass]="
+                      formError && confirmPasswordErrors && !passwordErrors
+                        ? 'error-input-border'
+                        : ''
+                    "
                   />
+                  <div
+                    *ngIf="formError && confirmPasswordErrors"
+                    class="errors"
+                  >
+                    <p
+                      *ngIf="
+                        !passwordErrors &&
+                        confirmPasswordErrors.passwordMismatch
+                      "
+                    >
+                      <i class="fas fa-exclamation-circle error-icon"></i>
+                      Şifreler eşleşmiyor
+                    </p>
+                  </div>
                 </div>
               </div>
               <div class="show-icon">
                 <i class="far fa-eye-slash"></i>
               </div>
-              <div class="input-span">
-                8 veya daha fazla harf, rakam ve sembolü karışık olarak kullanın
+              <div [hidden]="formError" class="input-span">
+                6 veya daha fazla harf, rakam veya sembol kullanın
               </div>
             </div>
           </div>

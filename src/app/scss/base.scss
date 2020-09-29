@@ -6,7 +6,7 @@
 
 @mixin input-styling {
   outline: none;
-  border-radius: 3px;
+  border-radius: 5px;
   border: 1px solid $border-color;
   color: $placeholder-color;
 }
@@ -19,7 +19,6 @@
   border: none;
   background: $blue-color;
 }
-
 
 // -------- COLORS --------- //
 
