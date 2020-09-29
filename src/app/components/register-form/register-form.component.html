@@ -1,26 +1,38 @@
 <div class="register-form">
   <div class="row">
     <div class="left-side col-lg-7">
-        <div class="logo">
-            <img class="google-logo" src="../../../assets/google-logo.png" alt="">
-        </div>
+      <div class="logo">
+        <img
+          class="google-logo"
+          src="../../../assets/google-logo.png"
+          alt="google-logo"
+        />
+      </div>
       <div class="title">
         <h4>Google Hesabınızı oluşturun</h4>
       </div>
       <div class="form-content">
-        <form>
+        <form [formGroup]="userForm" (submit)="submitForm()">
           <div class="names-info">
             <div class="row">
               <div class="name col-sm-6 pr-0">
-                <input type="text" placeholder="Ad" />
+                <input type="text" placeholder="Ad" formControlName="name" />
               </div>
-              <div class="surname col-sm-6">
-                <input type="text" placeholder="Soyad" />
+              <div class="lastName col-sm-6">
+                <input
+                  type="text"
+                  placeholder="Soyad"
+                  formControlName="lastName"
+                />
               </div>
             </div>
           </div>
           <div class="email">
-            <input type="text" placeholder="Kullanıcı Adı" />
+            <input
+              type="text"
+              placeholder="Kullanıcı Adı"
+              formControlName="email"
+            />
             <div class="input-span">
               Harf,rakam ve nokta işaretini kullanabilirsiniz.
             </div>
@@ -31,19 +43,29 @@
             </div>
           </div>
           <div class="password-confirmPass">
-            <div class="row">
-              <div class="password col-sm-5 pr-0">
-                <input type="password" placeholder="Şifre" />
+            <div class="body">
+              <div class="inputs">
+                <div class="password">
+                  <input
+                    type="password"
+                    placeholder="Şifre"
+                    formControlName="password"
+                  />
+                </div>
+                <div class="confirm-password ml-3">
+                  <input
+                    type="password"
+                    placeholder="Onayla"
+                    formControlName="confirmPass"
+                  />
+                </div>
               </div>
-              <div class="confirm-password col-sm-5 pr-0">
-                <input type="password" placeholder="Onayla" />
-              </div>
-              <div class="show-icon col-sm-2 d-flex align-items-center">
+              <div class="show-icon">
                 <i class="far fa-eye-slash"></i>
               </div>
-            </div>
-            <div class="input-span">
-              8 veya daha fazla harf, rakam ve sembolü karışık olarak kullanın
+              <div class="input-span">
+                8 veya daha fazla harf, rakam ve sembolü karışık olarak kullanın
+              </div>
             </div>
           </div>
           <div class="form-actions">
@@ -52,7 +74,7 @@
                 <button>Bunun yerine oturum aç</button>
               </div>
               <div class="submit-button">
-                <button>İleri</button>
+                <button type="submit">İleri</button>
               </div>
             </div>
           </div>
@@ -61,11 +83,14 @@
     </div>
     <div class="right-side col-5">
       <div class="image">
-        <img src="https://ssl.gstatic.com/accounts/signup/glif/account.svg" alt="" />
-        <div class="catchword">
-            <p>Tek hesap. Tüm Google emrinizde.</p>
-        </div>
-    </div>
+        <img
+          src="https://ssl.gstatic.com/accounts/signup/glif/account.svg"
+          alt=""
+        />
+      </div>
+      <div class="catchword">
+        <p>Tek hesap. Tüm Google emrinizde.</p>
+      </div>
     </div>
   </div>
 </div>
