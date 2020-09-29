@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "google-register-demo"
+    }
+  },
+  "defaultProject": "google-register-demo",
+  "cli": {
+    "analytics": "496052d2-981a-47fa-881f-656dc59b02a8"
+  }
 }

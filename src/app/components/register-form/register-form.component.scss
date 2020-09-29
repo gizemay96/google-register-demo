@@ -1,0 +1,121 @@
+@import "../../../styles.scss";
+
+.register-form {
+  padding: 48px 25px 36px 40px;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  max-width: 750px;
+
+  .left-side {
+    .logo {
+      margin-bottom: 15px;
+      img {
+        max-width: 75px;
+      }
+    }
+
+    .title {
+      h4 {
+        font-weight: 400;
+      }
+    }
+    .form-content {
+      padding: 24px 18px 0 0px;
+      form {
+        input {
+          width: 100%;
+          outline: none;
+          border-radius: 3px;
+          border: 1px solid $border-color;
+          padding: 2px 9px 7px 9px;
+          margin: 10px 0;
+          color: $placeholder-color;
+
+          &::placeholder {
+            font-size: 14px;
+          }
+        }
+
+        .input-span {
+          font-size: 12.5px;
+        }
+        .email-action {
+          .button {
+            a {
+              color: $link-color;
+              font-size: 13.5px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+
+      .password-confirmPass {
+        margin-top: 20px;
+
+        .show-icon {
+          font-size: 20px;
+        }
+      }
+    }
+
+    .form-actions {
+      margin-top: 35px;
+      .text-button {
+        button {
+          border: none;
+          background: none;
+          color: $link-color;
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+
+      .submit-button {
+        button {
+          border: none;
+          background: #1a73e8;
+          padding: 8px 30px;
+          color: white;
+          font-size: 14px;
+          font-weight: 600;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+
+  .right-side {
+    padding-left: 30px;
+    display: flex;
+    align-items: center;
+
+    .catchword {
+      p {
+        color: $placeholder-color;
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .register-form {
+    max-width: 450px !important;
+  }
+  .right-side {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 601px) {
+  .register-form {
+    padding: 0 0 0 15px;
+    border: none;
+
+    .name,
+    .password,
+    .confirm-password {
+      padding-right: 15px !important;
+    }
+  }
+}
