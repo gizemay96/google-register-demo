@@ -95,7 +95,7 @@
             />
             <!-- HIDDEN FOCUS TEXT -->
             <span
-              [ngClass]="formError && emailErrors ? 'invalid-focus-text' : ''"
+              [ngClass]="formError && emailErrors || ServerErrorMessage ? 'invalid-focus-text' : ''"
               class="input-focus-text"
               >Email</span
             >

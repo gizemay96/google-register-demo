@@ -7,6 +7,14 @@
       "password": "123456",
       "confirmPassword": "123456",
       "id": 3
+    },
+    {
+      "name": "asas",
+      "lastName": "ay",
+      "email": "gizem0796@gmail.com",
+      "password": "256256",
+      "confirmPassword": "256256",
+      "id": 4
     }
   ]
 }
