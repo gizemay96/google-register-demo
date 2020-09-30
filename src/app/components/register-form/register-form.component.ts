@@ -97,7 +97,7 @@ export class RegisterFormComponent implements OnInit {
           this.newUser.emit(this.userForm.value);
           this.successForm.emit();
         }
-      }, 400);
+      }, 600);
     }
   }
 }
