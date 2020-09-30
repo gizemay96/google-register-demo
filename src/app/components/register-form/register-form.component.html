@@ -1,4 +1,4 @@
-<div class="register-form">
+<div class="register-card">
   <div class="row">
     <div class="left-side col-lg-7">
       <div class="logo">
@@ -11,10 +11,9 @@
       <div class="title">
         <h4>Google Hesabınızı oluşturun</h4>
       </div>
-      <div class="form-content">
+      <div class="register-form">
         <form [formGroup]="userForm" (submit)="submitForm()">
-          <!--            NAME INPUT            -->
-
+          <!--   ------   NAME INPUT    ------   -->
           <div class="names-info">
             <div class="row">
               <div class="name col-sm-6 pr-0">
@@ -23,7 +22,9 @@
                   placeholder="Ad"
                   formControlName="name"
                   [ngClass]="
-                    formError && nameErrors ? 'error-input-border' : ''
+                    formError && nameErrors
+                      ? 'error-input-border'
+                      : formError && !nameErrors && 'valid-border'
                   "
                 />
                 <div *ngIf="formError && nameErrors" class="errors">
@@ -43,7 +44,9 @@
                   placeholder="Soyad"
                   formControlName="lastName"
                   [ngClass]="
-                    formError && lastnameErrors ? 'error-input-border' : ''
+                    formError && lastnameErrors
+                      ? 'error-input-border'
+                      : formError && !lastnameErrors && 'valid-border'
                   "
                 />
                 <div *ngIf="formError && lastnameErrors" class="errors">
@@ -67,14 +70,18 @@
               type="text"
               placeholder="Kullanıcı Adı"
               formControlName="email"
-              [ngClass]="formError && emailErrors ? 'error-input-border' : ''"
+              [ngClass]="
+                formError && emailErrors
+                  ? 'error-input-border'
+                  : formError && !emailErrors && 'valid-border'
+              "
             />
             <div *ngIf="formError && emailErrors" class="errors">
               <p *ngIf="emailErrors.required">
                 <i class="fas fa-exclamation-circle error-icon"></i>
                 Gmail Adresi Seçin
               </p>
-              <p *ngIf="emailErrors.email">
+              <p *ngIf="emailErrors.invalidEmail">
                 <i class="fas fa-exclamation-circle error-icon"></i>
                 Geçerli bir email adresi girin
               </p>
@@ -100,7 +107,9 @@
                     placeholder="Şifre"
                     formControlName="password"
                     [ngClass]="
-                      formError && passwordErrors ? 'error-input-border' : ''
+                      formError && passwordErrors
+                        ? 'error-input-border'
+                        : formError && !passwordErrors && 'valid-border'
                     "
                   />
                   <div *ngIf="formError && passwordErrors" class="errors">
@@ -124,7 +133,7 @@
                     [ngClass]="
                       formError && confirmPasswordErrors && !passwordErrors
                         ? 'error-input-border'
-                        : ''
+                        : formError && !passwordErrors && 'valid-border'
                     "
                   />
                   <div
@@ -151,6 +160,9 @@
               </div>
             </div>
           </div>
+
+          <!--            FORM ACTIONS           -->
+
           <div class="form-actions">
             <div class="d-flex justify-content-between align-items-center">
               <div class="text-button">

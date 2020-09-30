@@ -1,0 +1,28 @@
+<div class="success-card">
+  <div class="card-content">
+    <div class="logo">
+      <img
+        class="google-logo"
+        src="../../../assets/google-logo.png"
+        alt="google-logo"
+      />
+    </div>
+    <div class="title">
+      <h3>Kayıt Başarılı !</h3>
+    </div>
+    <div *ngIf="user" class="user-card mt-5">
+      <div class="info-label">
+        <h5>Ad:</h5>
+        <p>{{ user.name }}</p>
+      </div>
+      <div class="info-label">
+        <h5>Soyad:</h5>
+        <p>{{ user.lastName }}</p>
+      </div>
+      <div class="info-label">
+        <h5>Email:</h5>
+        <p>{{ user.email }}</p>
+      </div>
+    </div>
+  </div>
+</div>

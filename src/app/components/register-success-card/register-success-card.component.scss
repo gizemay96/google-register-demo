@@ -1,0 +1,28 @@
+@import "../../scss/base.scss";
+
+.success-card {
+  @include lg-card();
+
+  .logo {
+    img {
+      @include sm-logo();
+    }
+  }
+
+  .info-label {
+    @include successInfo-label();
+
+    h5 {
+      color: $placeholder-color;
+      margin: 0;
+      background: #dadce0d9;
+      padding: 5px 10px;
+    }
+
+    p {
+      color: $placeholder-color;
+      padding: 0 10px;
+      margin: 0;
+    }
+  }
+}

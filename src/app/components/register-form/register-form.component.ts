@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomvalidationService } from 'src/app/validations/customvalidation.service';
 
@@ -8,6 +8,9 @@ import { CustomvalidationService } from 'src/app/validations/customvalidation.se
   styleUrls: ['./register-form.component.scss'],
 })
 export class RegisterFormComponent implements OnInit {
+  @Output() successForm = new EventEmitter();
+  @Output() newUser = new EventEmitter();
+
   formError: boolean = false; // will be true if the userForm is invalid
 
   userForm = new FormGroup(
@@ -17,7 +20,13 @@ export class RegisterFormComponent implements OnInit {
         Validators.required,
         Validators.minLength(2),
       ]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl(
+        '',
+        Validators.compose([
+          Validators.required,
+          this.customValidator.emailValidator(),
+        ])
+      ),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
@@ -62,7 +71,8 @@ export class RegisterFormComponent implements OnInit {
       console.log('invalid', this.userForm);
       this.formError = true;
     } else {
-      console.log(this.userForm);
+      this.successForm.emit();
+      this.newUser.emit(this.userForm.value);
     }
   }
 }

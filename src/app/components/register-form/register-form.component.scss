@@ -1,14 +1,9 @@
 @import "../../scss/base.scss";
 
-.register-form {
-  padding: 40px;
-  border: 1px solid $border-color;
-  border-radius: 10px;
-  max-width: 750px;
-  transition: 700ms ease-in-out;
+.register-card {
+  @include lg-card();
 
   .left-side {
-    
     .logo {
       img {
         margin-bottom: 15px;
@@ -22,7 +17,7 @@
       }
     }
 
-    .form-content {
+    .register-form {
       padding: 24px 18px 0 0px;
       form {
         input {
@@ -116,7 +111,6 @@
   }
 }
 
-
 //        VALIDATION ERROR STYLING          //
 
 .errors {
@@ -136,8 +130,9 @@
   border: 2px solid red !important;
 }
 
-
-
+.valid-border {
+  border: 2px solid $blue-color !important;
+}
 
 //        RESPONSİVE CODES          //
 

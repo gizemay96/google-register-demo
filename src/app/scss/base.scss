@@ -20,6 +20,29 @@
   background: $blue-color;
 }
 
+@mixin lg-card {
+  padding: 40px;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  max-width: 750px;
+  transition: 700ms ease-in-out;
+}
+
+@mixin sm-logo {
+  margin-bottom: 15px;
+  max-width: 75px;
+}
+
+@mixin successInfo-label {
+  display: grid;
+  border: 1px solid #dadce0;
+  align-items: center;
+  grid-template-columns: 3fr 7fr;
+  border-radius: 5px;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
 // -------- COLORS --------- //
 
 $placeholder-color: #5f6368;
