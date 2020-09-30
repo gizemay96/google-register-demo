@@ -16,13 +16,47 @@
       color: $placeholder-color;
       margin: 0;
       background: #dadce0d9;
-      padding: 5px 10px;
+      padding: 10px 20px;
+      border-radius: 0px 15px 0px 0px;
+      box-shadow: 0 0 25px 3px #a7a7a7;
     }
 
     p {
-      color: $placeholder-color;
-      padding: 0 10px;
+      color: #a0a0a0bd;
+      padding-left: 15px;
       margin: 0;
+      font-weight: 600;
+    }
+  }
+
+  .actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    .new-account{
+      button{
+        @include text-btn();
+      }
+    }
+    .move{
+      button{
+        padding: 8px 10px;
+        @include blue-btn();
+      }
     }
   }
 }
+
+
+@media screen and (max-width:420px) {
+  .success-card{
+    border: none !important;
+  }
+  .info-label{
+    grid-template-columns: 5fr 9fr !important;
+    h5{
+      padding: 10px 11px !important;
+    }
+  }
+  }

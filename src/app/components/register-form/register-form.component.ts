@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 import { CustomvalidationService } from 'src/app/validations/customvalidation.service';
 
 @Component({
@@ -12,6 +13,9 @@ export class RegisterFormComponent implements OnInit {
   @Output() newUser = new EventEmitter();
 
   formError: boolean = false; // will be true if the userForm is invalid
+  isLoading: boolean = false;
+  showPassword: boolean = false; // Password will appear when true .
+  showInputText: boolean = false; // hidden focus text will appear when true .
 
   userForm = new FormGroup(
     {
@@ -61,18 +65,39 @@ export class RegisterFormComponent implements OnInit {
   get confirmPasswordErrors() {
     return this.userForm.controls.confirmPassword.errors;
   }
+  //    ----  GET SERVER ERROR  ---- //
 
-  constructor(private customValidator: CustomvalidationService) {}
+  get ServerErrorMessage() {
+    return this.userService.getServerError();
+  }
+
+  constructor(
+    private customValidator: CustomvalidationService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {}
 
   submitForm() {
+    this.isLoading = true;
+    // form control //
     if (this.userForm.invalid) {
-      console.log('invalid', this.userForm);
       this.formError = true;
-    } else {
-      this.successForm.emit();
-      this.newUser.emit(this.userForm.value);
+      this.isLoading = false;
+    }
+    // create user  //
+    else {
+      this.userService.post(this.userForm.value);
+      setTimeout(() => {
+        // server error control //
+        if (this.ServerErrorMessage) {
+          this.isLoading = false;
+        } else {
+          this.isLoading = false;
+          this.newUser.emit(this.userForm.value);
+          this.successForm.emit();
+        }
+      }, 400);
     }
   }
 }

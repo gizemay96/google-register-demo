@@ -4,22 +4,6 @@
   justify-content: center;
 }
 
-@mixin input-styling {
-  outline: none;
-  border-radius: 5px;
-  border: 1px solid $border-color;
-  color: $placeholder-color;
-}
-
-@mixin blue-btn {
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 5px;
-  border: none;
-  background: $blue-color;
-}
-
 @mixin lg-card {
   padding: 40px;
   border: 1px solid $border-color;
@@ -33,9 +17,53 @@
   max-width: 75px;
 }
 
+// -------- COLORS --------- //
+
+$placeholder-color: #5f6368;
+$border-color: #dadce0;
+$blue-color: #1a73e8;
+
+// ----- ABOUT BUTTONS  ----- //
+
+@mixin icon-btn {
+  border: none;
+  background: transparent;
+  outline: none;
+  border-radius: 30%;
+  &:hover {
+    background: rgba(117, 200, 255, 0.116);
+  }
+}
+
+@mixin blue-btn {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 5px;
+  border: none;
+  background: $blue-color;
+  outline: none;
+}
+
+@mixin text-btn {
+  border: none;
+  background: none;
+  color: $blue-color;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 5px 1px;
+  outline: none;
+
+  &:hover {
+    background: rgba(117, 200, 255, 0.116);
+  }
+}
+
+// ----- ABOUT SUCCESS USER INFO LABEL  ----- //
 @mixin successInfo-label {
   display: grid;
-  border: 1px solid #dadce0;
+  box-shadow: 0px 1px 9px 0px #c7c7c7;
   align-items: center;
   grid-template-columns: 3fr 7fr;
   border-radius: 5px;
@@ -43,8 +71,22 @@
   overflow: hidden;
 }
 
-// -------- COLORS --------- //
+// -----  ABOUT INPUTS  ----- //
+@mixin input-styling {
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid $border-color;
+  color: $placeholder-color;
+}
 
-$placeholder-color: #5f6368;
-$border-color: #dadce0;
-$blue-color: #1a73e8;
+@mixin input-focus-text {
+  display: none;
+  position: absolute;
+  transform: translate(3px, -55px);
+  padding: 1px 6px;
+  font-size: 10px;
+  font-weight: 600;
+  background: white;
+  color: #1a73e8;
+  transition: 2s ease-in-out;
+}

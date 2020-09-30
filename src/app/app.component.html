@@ -1,12 +1,13 @@
 <div class="register-page">
   <app-register-form
-  (newUser) = "getNewUser($event)"
+    (newUser)="getNewUser($event)"
     (successForm)="registerSuccess = true"
     *ngIf="!registerSuccess; else successCard"
   ></app-register-form>
   <ng-template #successCard>
     <app-register-success-card
-    [user] = "newUser"
+      [user]="newUser"
+      (turnRegisterPage)="registerSuccess = false"
     ></app-register-success-card>
   </ng-template>
 </div>

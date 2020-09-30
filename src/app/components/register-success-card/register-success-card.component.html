@@ -10,18 +10,32 @@
     <div class="title">
       <h3>Kayıt Başarılı !</h3>
     </div>
-    <div *ngIf="user" class="user-card mt-5">
+    <div  class="user-card mt-5">
+      <!-- Name Info -->
       <div class="info-label">
         <h5>Ad:</h5>
         <p>{{ user.name }}</p>
       </div>
+      <!-- Lastname Info -->
       <div class="info-label">
         <h5>Soyad:</h5>
         <p>{{ user.lastName }}</p>
       </div>
+      <!-- Email Info -->
       <div class="info-label">
         <h5>Email:</h5>
         <p>{{ user.email }}</p>
+      </div>
+    </div>
+    <!-- Action Buttons -->
+    <div class="actions">
+      <div class="new-account">
+        <button (click)="turnRegisterPage.emit()">Yeni bir hesap edin</button>
+      </div>
+      <div class="move">
+        <a href="https://www.google.com">
+          <button>Devam et</button>
+        </a>
       </div>
     </div>
   </div>

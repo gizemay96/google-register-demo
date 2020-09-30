@@ -27,6 +27,14 @@
                       : formError && !nameErrors && 'valid-border'
                   "
                 />
+                <!-- HIDDEN FOCUS TEXT -->
+                <span
+                  [ngClass]="
+                    formError && nameErrors ? 'invalid-focus-text' : ''
+                  "
+                  class="input-focus-text"
+                  >Ad</span
+                >
                 <div *ngIf="formError && nameErrors" class="errors">
                   <p *ngIf="nameErrors.required">
                     <i class="fas fa-exclamation-circle error-icon"></i>
@@ -49,6 +57,15 @@
                       : formError && !lastnameErrors && 'valid-border'
                   "
                 />
+                <!-- HIDDEN FOCUS TEXT -->
+                <span
+                  [ngClass]="
+                    formError && lastnameErrors ? 'invalid-focus-text' : ''
+                  "
+                  class="input-focus-text"
+                  >Soyad</span
+                >
+                <!-- ERROR MESSAGES -->
                 <div *ngIf="formError && lastnameErrors" class="errors">
                   <p *ngIf="lastnameErrors.required">
                     <i class="fas fa-exclamation-circle error-icon"></i>
@@ -68,14 +85,21 @@
           <div class="email">
             <input
               type="text"
-              placeholder="Kullanıcı Adı"
+              placeholder="Email"
               formControlName="email"
               [ngClass]="
-                formError && emailErrors
+                (formError && emailErrors) || ServerErrorMessage
                   ? 'error-input-border'
                   : formError && !emailErrors && 'valid-border'
               "
             />
+            <!-- HIDDEN FOCUS TEXT -->
+            <span
+              [ngClass]="formError && emailErrors ? 'invalid-focus-text' : ''"
+              class="input-focus-text"
+              >Email</span
+            >
+            <!-- ERROR MESSAGES -->
             <div *ngIf="formError && emailErrors" class="errors">
               <p *ngIf="emailErrors.required">
                 <i class="fas fa-exclamation-circle error-icon"></i>
@@ -86,24 +110,34 @@
                 Geçerli bir email adresi girin
               </p>
             </div>
+            <!-- SERVER ERROR MESSAGE -->
+            <div class="errors">
+              <p *ngIf="ServerErrorMessage">
+                <i class="fas fa-exclamation-circle error-icon"> </i
+                >{{ ServerErrorMessage }}
+              </p>
+            </div>
+            <!-- BOTTOM TEXT -->
             <div [hidden]="formError" class="input-span">
               Harf,rakam ve nokta işaretini kullanabilirsiniz.
             </div>
+            <!-- ACTION BUTTON -->
             <div class="email-action">
-              <div class="button">
-                <a href="">Bunun yerine, geçerli e-posta adresimi kullan</a>
-              </div>
+              <button type="button">
+                Bunun yerine, geçerli e-posta adresimi kullan
+              </button>
             </div>
           </div>
 
           <!--            PASSWORD & CONFIRM PASSWORD INPUTS           -->
 
+          <!--   PASSWORD   -->
           <div class="password-confirmPass">
             <div class="body">
               <div class="inputs">
                 <div class="password">
                   <input
-                    type="password"
+                    [type]="!showPassword ? 'password' : 'text'"
                     placeholder="Şifre"
                     formControlName="password"
                     [ngClass]="
@@ -112,6 +146,15 @@
                         : formError && !passwordErrors && 'valid-border'
                     "
                   />
+                  <!-- HIDDEN FOCUS TEXT -->
+                  <span
+                    [ngClass]="
+                      formError && passwordErrors ? 'invalid-focus-text' : ''
+                    "
+                    class="input-focus-text"
+                    >Şifre</span
+                  >
+                  <!-- ERROR MESSAGES -->
                   <div *ngIf="formError && passwordErrors" class="errors">
                     <p *ngIf="passwordErrors.required">
                       <i class="fas fa-exclamation-circle error-icon"></i>
@@ -125,9 +168,10 @@
                     </p>
                   </div>
                 </div>
+                <!--  CONFIRM PASSWORD   -->
                 <div class="confirm-password ml-3">
                   <input
-                    type="password"
+                    [type]="!showPassword ? 'password' : 'text'"
                     placeholder="Onayla"
                     formControlName="confirmPassword"
                     [ngClass]="
@@ -136,6 +180,15 @@
                         : formError && !passwordErrors && 'valid-border'
                     "
                   />
+                  <!-- HIDDEN FOCUS TEXT -->
+                  <span
+                    [ngClass]="
+                      formError && confirmPasswordErrors ? 'invalid-focus-text' : ''
+                    "
+                    class="input-focus-text"
+                    >Onayla</span
+                  >
+                  <!-- ERROR MESSAGES -->
                   <div
                     *ngIf="formError && confirmPasswordErrors"
                     class="errors"
@@ -152,9 +205,24 @@
                   </div>
                 </div>
               </div>
+              <!--   SHOW PASSWORD ICON   -->
               <div class="show-icon">
-                <i class="far fa-eye-slash"></i>
+                <button
+                  *ngIf="!showPassword"
+                  type="button"
+                  (click)="showPassword = true"
+                >
+                  <i class="far fa-eye-slash"></i>
+                </button>
+                <button
+                  *ngIf="showPassword"
+                  type="button"
+                  (click)="showPassword = false"
+                >
+                  <i class="far fa-eye"></i>
+                </button>
               </div>
+              <!-- BOTTOM TEXT -->
               <div [hidden]="formError" class="input-span">
                 6 veya daha fazla harf, rakam veya sembol kullanın
               </div>
@@ -166,10 +234,12 @@
           <div class="form-actions">
             <div class="d-flex justify-content-between align-items-center">
               <div class="text-button">
-                <button>Bunun yerine oturum aç</button>
+                <button type="button">Bunun yerine oturum aç</button>
               </div>
               <div class="submit-button">
-                <button type="submit">İleri</button>
+                <button type="submit">
+                  {{ isLoading ? "Loading..." : "İleri" }}
+                </button>
               </div>
             </div>
           </div>
