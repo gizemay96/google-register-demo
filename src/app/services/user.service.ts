@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  post(newUser) {
+  post(newUser:User) {
     this.serverErrorMessage = '';
     // check emails available //
     this.http
@@ -22,6 +22,7 @@ export class UserService {
           this.http
             .post('http://localhost:3000/users', newUser)
             .subscribe((response: User) => {
+              console.log(response)
               return;
             });
         } else {
